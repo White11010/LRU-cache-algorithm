@@ -36,7 +36,7 @@ const LRUCache = (() => {
                 this.cache.delete(key);
             }
             if (this.cache.size === this.maxSize) {
-                this.delete();
+                this.delete(this.lru());
             }
             this.cache.set(key, value);
             return this;
@@ -52,8 +52,8 @@ const LRUCache = (() => {
         /**
          * Removes the first element from cache
          */
-        delete() {
-            this.cache.delete(this.lru());
+        delete(key) {
+            this.cache.delete(key);
         } 
 
         /**
